@@ -73,7 +73,3 @@ def deploy():
         return False
 
     return do_deploy(archived_path)
-
-
-if __name__ == "__main__":
-    deploy()
