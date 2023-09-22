@@ -1,6 +1,13 @@
 #!/usr/bin/python3
 """
 This is a simple Flask web application.
+The script starts a Flask web application:
+    Listening on 0.0.0.0, port 5000
+    Routes:
+        /: display 'Hello HBNB!'
+        /hbnb: display 'HBNB'
+        /c/<text>: display 'C ' followed by the value of the text variable
+          (replace underscore _ symbols with a space )
 """
 
 
