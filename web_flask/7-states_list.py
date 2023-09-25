@@ -1,14 +1,17 @@
 #!/usr/bin/python3
 """
-This is a simple Flask web application.
+This module contains a simple Flask web application that displays a list of
+states.
+
 The script starts a Flask web application:
-    Listening on 0.0.0.0, port 5000
-    Routes:
-        /states_list: display a HTML page: (inside the tag BODY)
-            - H1 tag: “States”
-            - UL tag: with the list of all State objects present in DBStorage
-              sorted by name (A->Z) tip
-            - LI tag: description of one State: <state.id>: <B><state.name></B>
+    - Listening on 0.0.0.0, port 5000
+    - Defines a single route: /states_list
+
+Routes:
+    - /states_list: Display a HTML page containing a list of all State objects
+    present in DBStorage,
+                    sorted by name (A->Z).
+                    Each state is listed with its ID and name.
 """
 
 from flask import Flask, render_template
