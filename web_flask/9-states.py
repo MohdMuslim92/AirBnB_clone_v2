@@ -29,12 +29,6 @@ from models.city import City
 app = Flask(__name__)
 
 
-@app.teardown_appcontext
-def close_session(exception):
-    """Close the SQLAlchemy session."""
-    storage.close()
-
-
 @app.route('/states', strict_slashes=False)
 def list_states():
     """Display a list of states."""
@@ -52,6 +46,12 @@ def display_state(state_id):
         return render_template('9-states.html', state=state, cities=cities)
     else:
         return render_template('9-states.html', not_found=True)
+
+
+@app.teardown_appcontext
+def close_session(exception):
+    """Close the SQLAlchemy session."""
+    storage.close()
 
 
 if __name__ == '__main__':
