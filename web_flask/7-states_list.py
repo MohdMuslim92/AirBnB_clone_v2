@@ -2,14 +2,21 @@
 """
     This module contains a simple Flask web application that displays a list of
     states.
+
+    The script starts a Flask web application:
+        - Listening on 0.0.0.0, port 5000
+        - Defines a single route: /states_list
+
+    Routes:
+        - /states_list: Display a HTML page containing a list of all State
+        objects present in DBStorage, sorted by name (A->Z).
+        Each state is listed with its ID and name.
 """
 
 from flask import Flask, render_template
 from models import *
 from models import storage
 from models.state import State
-
-
 app = Flask(__name__)
 
 
