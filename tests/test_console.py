@@ -20,7 +20,7 @@ class TestConsole(unittest.TestCase):
     """testing console.py"""
 
     def test_prompt_string(self):
-        """ Testing prompt """
+        """ To test the prompt"""
         self.assertEqual("(hbnb) ", HBNBCommand.prompt)
 
     def test_pep8e(self):
