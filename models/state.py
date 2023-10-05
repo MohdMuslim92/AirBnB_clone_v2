@@ -2,28 +2,28 @@
 """ State Module for HBNB project """
 from models.base_model import BaseModel, Base
 from models.city import City
+import models
 from os import getenv
 from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy.orm import relationship
 
 
-if getenv("HBNB_TYPE_STORAGE") == "db":
-    class State(BaseModel, Base):
-        """The State class, which has a relationship with the City class when
-        using a database."""
-        __tablename__ = 'states'
-        name = Column(String(128), nullable=False)
-        cities = relationship("City", backref="state")
+storage = getenv("HBNB_TYPE_STORAGE")
 
-        def __init__(self, *args, **kwargs):
-            """initializes state"""
-            super().__init__(*args, **kwargs)
-else:
-    class State(BaseModel, Base):
-        """The State class, which has a list of related City instances when
-        not using a database."""
+
+class State(BaseModel, Base):
+    """The State class, which has a relationship with the City class when
+    using a database."""
+    __tablename__ = 'states'
+    if storage == "db":
+        name = Column(String(128), nullable=False)
+        cities = relationship("City", backref="state",
+                              cascade="all, delete-orphan")
+
+    else:
         name = ""
 
+    if storage != 'db':
         @property
         def cities(self):
             """getter for list of city instances related to the state"""
